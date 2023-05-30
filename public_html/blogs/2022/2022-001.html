@@ -44,115 +44,69 @@
 
     <div class="container page-container">
         <div class="col-md-10 col-lg-8 m-auto">
-            <h6 class="title mb-4 mt-5 pt-5">Rant on Snaps and open letter to Canonical</h6>
+            <h6 class="title mb-4 mt-5 pt-5">Rant on Snaps and open letter to Canonical Linux</h6>
     
             <div class="row mb-5">
                 <div class="col-md-6">
                     <a href="javascript:void(0)" class="card">
-                        <img src="../../assets/imgs/blog-1.jpg" class="card-img" alt="project01">
+                        <img src="../../assets/imgs/canonical.png" class="card-img" alt="project01">
                         <div class="card-body">
                         </div>                  
                     </a>
                 </div>      
             </div>
 
-            <p class="mb-5">A big long rant on Ubuntu, snap packages, and the mindset of fixing things that aren’t broken , all to push a poorly implemented idea under the guise of improvement.
-                So, I just finished purging snapd from my system again on unbuntu 22.04. After having to  install a normal firefox version that actually works with the built-in gnome functionality such 
-                as gnome-extensions. So now I really needed to vent about some of these design choices.             
-                So, I wanna talk about Ubuntu version 22.04, Jammy Jellyfish. But more specifically, snap packages in Ubuntu and why they are a pain in the behind, back then and still.</p>
-            
-            <p class="mb-5">And let me preface this to first answer the question from the Ubuntu distro-haters: ‘Why are you on Ubuntu to begin with, it's a noob distro?’ First, I guess that’s for a few reasons. second, you're 
-                wrong and i'll tell you why lol. I  genuinely like ubuntu's implementation of GNOME DE, how the nomenclature of debian commands just kinda make sense, and gaming on Ubuntu is in
-                general much better supported now then on other distro’s with Valve's Steam. I also ran Arch Linux and Manjaro, but I was kind of tired of having the rolling releases on Arch. I do 
-                think Ubuntu on average is too far behind the current versions, but I prefer having the stability of fixed releases to being on the bleeding edge at all times like Arch. The fact that most stuff
-                from Arch Linux wiki works interchangably between on Ubuntu and Arch is nice as well.</p>
+            <p class="mb-5">I just got done removing the Firefox Snap and purging all of snapd from my system again,
+                so now comes the time I really have to vent about some of these design choices. 
+                I want to talk about Jammy Jellyfish. But more specifically, Snap packages in Ubuntu and why they are a bad plan, back then and still.
+                But first let me preface this to answer the question from Ubuntu distro-haters: “Why are you on Ubuntu to begin with, it's a noob distro?”</p>
                 
-            <p class="mb-5">So for my gaming and working at home PC, Ubuntu is for now my distro of choice. I came to realise that the ubuntified gnome is actually better in look and in some ways functionality to me personally than
-                the more 'pure' gnome look, that arch and maybe other distro's like to use. 
-                In any case this, this rant is not about why I'm on Ubuntu. so, a small intro for the uninitiated: apt is the ‘Advanced Package Tool’ in Ubuntu/Debian.</p>
-        
-            <p class="mb-5">Apt was always the 'main' way of installing packages to the system. Actually, apt is the front-end functionality that talks to the underlying functionality dpkg. In practice, the 'apt install' command, creates a topological 
-                list of all the packages and then calls the dpkg function in the most optimal order to install these packages. Of course, nothing in this world works perfectly, and neither does apt/dpkg. Especially in a situation where you need 2 different 
-                versions of the exact same package it fails you. It could improve at those resolving dependency-conflicts a lot better, because there is no way to hold 2 different versions of the same package. 
-                While the system is not perfect, it's strength lies in the fact that you can always see what exactly is wrong, which packages are having conflics, which packages are missing, or any other problems that would prevent your app from launching. 
-                Snaps try their hand at fixing the issue of not being able to install 2 version of the same package by containerizing
-                them from eacother.</p>            
-            
-            <p class="mb-5">The above 'solution' is actually also what mostly lead us into the direction of the problem with snap packages to begin with.
-                So, let's talk about Snaps. Snaps are as u maybe know small virtual boxes/containers similar to flatpak, docker containers, etc. They install everything that is needed for the software to run inside their little box. The upside to this, is 
-                obviously that you have all required packages with the correct versions for that app, without causing any underlying conflicts.
-                You're not required to chase additional packages for the software that you already had to install, or run into a duplicate package issue with a version difference.</p>
-
-            <p class="mb-5">And I can hear you ask; '..OK, so then what actually is the problem with them!?' Well, everything, lol. Everything in regards to using the snap, basically. And especially the idea that they get pushed so hard that they are now the default way in 
-                Ubuntu to install software. Starting from Ubuntu 16.04 and up, the 'default' way to install software is through the software center, if you're not aware of the fact that you could be using .deb files from the commandline as an inexperienced user you could 
-                be having a severly downgraded first time experience using ubuntu. The Ubuntu 'Software center' is in itself just a snapd skin. Any software you install through the software center now gets installed as a snap at all times. And you might be thinking, ok, so why are snaps such a bad thing? They are simply a highly inferior design to what existed already, and that's also giving credit to the solid
-                foundation that exists in dpkg, and not just a cheap shot at snaps.</p>
-
-            <p class="mb-5">Snaps actually just don't work as good as canonical wants them to work, period. And certainly not compared to any other app that has an regular .deb version to install from. There are some select snaps that do work well, but it’s honestly the small minority.
-                The whole idea that they want to make it more easy to install software in Ubuntu for end users, or with conflicting libraries is great I think. But when critical features of the software don’t work because of the fact that you sandboxed them, or the way you install them 
-                from the software center is actually so incredibly buggy, it kind of defeats it’s own entire point.</p>
-
-            <p class="mb-5">The first major issue is that snaps often don't install correctly, and they are poorly/not maintaned in a lot of cases. in some cases in the past, even highly insecure or malicious. 
-                So the quality control of packages, something that used to be important in Ubuntu, snapd just seems to have throw away with this entire design philosphy. Canonical can no longer control 
-                what devs do with snaps, so Microsoft just leaves Skype totally broken in the snap store for over a year, people place crypto miners in their own snap, etc. Second major issue is that for 
-                the snaps that are sort of maintaned, sometimes they install and then just don't run properly for you. With that I mean important things, like the app is just a white screen that does notihng. 
-                With dpkg during an install, or heck, even just running an app on the commandline, gives you lots of information on how to fix it. And with the coming of snap packages in the event they don't 
-                end up working right away, you usually spend so long fixing them also that you might as well have dedicated all that time to install the .deb variant in the first place. The third major issue,
-                is that Snaps are on average like 30% slower to load up compared to the .deb variant when you do actually get them installed. Starting Firefox on 22.04 which is now a default snap feels like 
-                you can go get a coffee every time you open a new window. Same for lots of other apps. They are also always far larger in file size because they hold duplicate packages that cannot be tracked
-                by apt, which fixes one problem, and adds the fact that you might also install countless of other packages in duplicate. Granted, they're not very big packages, but Ubuntu that can run on way small 
-                footprints then Windows again does not gain anything from these design choices.</p>
-
-                <p class="mb-5">Snaps actually just don't work as good as canonical wants them to work, period. And certainly not compared to any other app that has an regular .deb version to install from. There are some select snaps that do work well, but it’s honestly the small minority.
-                The whole idea that they want to make it more easy to install software in Ubuntu for end users, or with conflicting libraries is great I think. But when critical features of the software don’t work because of the fact that you sandboxed them, or the way you install them 
-                from the software center is actually so incredibly buggy, it kind of defeats it’s own entire point.</p>
-
-                <p class="mb-5">The fourth and one of the most serious problem I think is the permissions for Snaps (even after setting them in the permissions panel or with the commandline) are always wonky, or more wonky than the .deb for sure.
-                Why would normal users want their Firefox downloads or Skype downloads to go into /tmp by default instead of the normal Downloads folder. Or why would normal end users want audacity not be able to control any
-                audio devices without tweaking? And I can hear people say: hurr durr, why don't you just fix the bad permissions of the snap then?
-                And my answer is, why are snaps made and thought of as to be convenient, when the whole idea of click and launch clearly does not work very well on linux anyway, so surrendering to the fact we're gonna have to bust 
-                out the terminal would be 100% a better solution in my humble opinion.
-                Canonical had everyone make a little sandbox, so people can easily install it, but then after this 'simple' install that might not even work, they need to troubleshoot all the apps core features, because it can't 
-                actually do anything by default without fixing a bunch of stuff right away. The Linux community but actually Canonical devs in general need to start understanding their target audiences more. Stop trying to please 
-                both of the big crowd at the same time, because this is how it feels all of the time, it seems you have no idea who ends up using your OS.
-                In my opinion, none of this would be an issue anyways, if snapd was just a nice little feature for boomers who are still on Ubuntu and really need it stil. But not THE way and soon the ONLY way to install everything 
-                for every single IT professional, developer, at all times from now and forever, and otherwise a thousand Bionic Beavers will strike your knee if you don't use our Snaps.</p>
-
-                <p class="mb-5">Why does it have to be like that Canonical, why you have to do us like that?
-                Snap is honestly OK if you really don't have any other alternative, because the developers for the software that you like to use hold some sadistic grudge to only develop a snap and not make a simple deb package or be able to compile from source, or something, 
-                but if I have a choice, hell no.I am so confused who Ubuntu is catering their OS towards in actuality. I feel like it's new users most of the time, but when you look at all the stuff not included in even the latest version in the current computer landscape it's 
-                kind of insane. Stuff I want to mention is no volume controls, no ability to select audio interfaces/devices, no out of the box hybernation and sleep functionality, no wifi channel reload button, I can go on for a while. One of my biggest pet peeves with it is when
-                you have the brand new ubuntu version installed and did nothing yet, often times simply right clicking on a certain app you want to uninstall that came default does not work, it either redirects you to the snap store and it can't find the app, or the link does not work 
-                at all. And you can 100% forget about being able to uninstall without a commandline, so again what is the point of this GUI feature really?</p>
-
-                <p class="mb-5">You are developing a Linux operating system, which is on average already like what? The market share of 0.3% of this entire planets desktop computer users, if you look at how many people are on Windows/Mac? That already implies that most normal end users are not Running Ubuntu anyways.
-                And you make these changes to, it seems accommodate new users to install software? But you actually don’t see that Linux itself is a very convoluted OS to almost everyone that has no experience with using it, and actually needs to learn about the commandline anyways. 
-                Especially when something breaks with a snap package, which is every time you install them lol. 
-                And I'm not even going to start on the smaller stuff such as breaking the entire principle of the GNOME system theme designs, or extension. Snaps don't adhere to it, additional steps are required all the time, when again this was something that was one of the biggest selling points of Ubuntu and 
-                GNOME at the same time, and the snap was supposed to SAVE us work remember?</p>
-
-                <p class="mb-5">Why are we pretending that the people that use Ubuntu in a serious capacity are the same people that asked for snaps? Or do you not care about any advanced users and only beginning users?
-                It seems that a lot of the stuff mentioned above could be a lot better for people who you claim to also need snaps, because it's clearly not for any of the computer scients, web- or software developers, security researchers, etc. etc. on Linux.
-                Otherwise I think you'd take into consideration stuff like chaning the firefox application to a snap only. And even worse, having it auto-reinstall the snap while you were using apt commands. That was what made me really dislike this last version.</p>
-
-                <p class="mb-5">Since I don't like to only complain and also like to think about solutions, if you do the same thing that you did for the snap store, but now build it around apt and dpkg instead, you could do the same thing you want to do but better.
-                An image that comes close to it in my head is the update wndow for ubuntu system software-updates, that seems to have a similar GUI-shell that werks perfect for certain situations with dpkg, just never for any front-end app store for whatever reason that might be.
-                Fix that issue and you have what you tried to find in the snap store all this time, and the apps would actually work after you installed them. Then we could still improve snaps over time for them to be less shit, but they needed so much work before they became the default,
-                and I will never understand why it was implemented as a main component so fast. i sincerely hoping this direction will be admitted for the mistake that it is, and we can all return to using dpkg like good old boys and girls without a care in the world.</p>
-
-                <p class="mb-5">
-                    At least for the sake of my sanity, let firefox be the only app you sneak into dpkg, let dpkg be our last remaining beacon of hope and sanity in these trying times.
-                    With that said, until that time is there that snap is unescapable or finally gone, I suggest to you all try;
-                    >sudo snap list
-                    >snap remove gtk-common-themes
-                    >snap remove everything else
-                    >snap remove snap-store
-                    >snap remove core18
-                    >snap remove core
-                    >apt remove snapd
-                    >apt purge snapd  
-                    and start using deb's instead. Cheers.</p>
-
+                <p class="mb-5">Call me crazy, I actually genuinely enjoy Canonicals’ implementation of the GNOME Desktop Environment. I also like how the syntax of Ubuntu/Debain commands makes a lot of sense to me, and they’re easy to remember. I used Arch Linux and Manjaro for a while as well, but I was getting kind of tired of having the rolling releases. While I do feel like Ubuntu on average is way too far behind when it comes to versions of software, I do much prefer having the stability of fixed released over being on the bleeding edge at all times like on Arch Linux. 
+                The fact that most stuff from the Arch Linux wiki works interchangeably between that and Ubuntu is nice too, since Arch has a much better documentation. </p>
+                <p class="mb-5">A lot of the configuration files and commands for lower the system components such as Linux service and sys manager (systemd), the X Window System (x11) and the Grand Unified Bootloader, (GRUB) of course all work the same too, and it’s all in all just less of a hassle.</p>
+                <p class="mb-5">Despite my apparently innate hatred for Ubuntu’s Snap packages, on average I think Ubuntu is an amazing template to build your own Linux workstation on. Especially for people that don’t feel the need to dive as deep into documentation as Arch requires you to do. Kali’s default toolset is great, but on average I don’t actually like to sit and spend a lot of time working inside a Kali box at all. I think for an actual distro to work in, it’s highly overrated. In any case, this rant was not about Linux distro’s or why I like using this one anyways, it’s about why snaps suck.</p>
+                <p class="mb-5">So first, a small intro for the uninitiated. APT is the ‘Advanced Package Tool’ in Ubuntu/Debian.
+                APT was always the 'main' way of installing packages to the system. Actually, apt is the front-end functionality that talks to the underlying functionality called dpkg. In practice, the 'apt install' command for example, creates a topological list of all the packages, and then calls the dpkg function in the most optimal order to install these. 
+                Of course, nothing in this world works perfectly, and neither does dpkg.</p>
+                <p class="mb-5">Especially in a situation where you want to install 2 different versions of the exact same package you will run into issues. This is not really an issue with dpkg itself, but more with not-containerizing, I suppose. It could definitely improve at these types of resolving dependency-conflicts a lot better, as far as that is possible without introducing the type of sand-boxing that snaps do.</p>
+                <p class="mb-5">So snap packages came by and kind fixed this issue of not being able to install 2 different version of that same packages. They achieve this simply by being these self-contained apps running inside their own sandboxes with some mediated access to the underlying host system. As such, they don’t care about any duplicate packages outside of their sandbox, and you can always install your applications regardless.</p>
+                
+                <p class="mb-5">The above solution that Snaps provide is unfortunately also the exact reason that they end up working so much worse than all of their deb counterparts in most situations.
+                Snaps are, as we just discussed, small virtual boxes/containers, similar to flatpaks on other distro’s. Yes, it’s nice that you're not required to chase any additional required packages for the main
+                application you were installing, or running into any duplicate packages issues with the version conflicts we talked about. The idea is that you just click on install from inside the store, and off you go.</p>
+                <p class="mb-5">But, snaps actually just don't work as well as Canonical wants them to work, period. 
+                Certainly not compared to any other app that has a regular .deb version to install from. There are some select Snaps that do work well, but it’s honestly the minority of them.
+                The whole idea of Snaps is that they want to make it easier to install software in Ubuntu for end-users and containerize apps and be able to push directly into upstream branches, which is honestly  all great. But, when critical features of the software don’t work yet in Snaps, either because of the fact that you sand-boxed them so much that they lost core functionalities, or the way you install them from the software center is actually so incredibly buggy, we clearly should not be pushing them this hard yet.</p>
+                <p class="mb-5">The first major flaw is that Snaps often don't even install correctly in many cases, and they are poorly/not maintained in a lot of other cases. In the past even malicious Snaps have appeared in the Snap store. So even quality control of software, something that used to be important to Canonical and the open source community, it just seems to have just been thrown out of the window with snapd. Canonical can no longer really check what devs do with Snaps, because of the fact that upstream devs can distribute directly into software branches to end users. And snaps update directly with your system.</p>
+                <p class="mb-5">One good example of why they simply work much more poorly is how the Audacity snap out of the box, has problem reaching any audio interface to record from. So now we’re tasking new users to investigate this said issue with the snap version, while it was supposed to help newer users. A one-click install or always having the most recent version should never take any precedence over an apps basic functionalities.
+                <p class="mb-5">Second major issue is that when they do install right, sometimes the apps don’t even work at all. With that I mean the app is just a white screen that does nothing. 
+                With dpkg during the install it would give you lots of information on what went wrong or how to troubleshoot the issue. Which packages it could use extra, which packages are required, which packages are in conflict with each other, and so on. With the coming of Snap packages, troubleshooting issues I find now suddenly significantly harder because Snaps give significantly less information on what is wrong.</p>
+                
+                <p class="mb-5">The third major issue, is that Snaps are on average like 30% slower to load up compared to the .deb variant when you do actually get one installed properly. And yes I have timed it. Firefox on 22.04 which is now a default Snap, feels like you can go get a coffee every time you open the app from cold start. I noticed that I had the Snap installed the moment I had updated my system to the newest version. When I removed it and installed the .deb or compiled it from builds, it was lightening fast.</p>
+                <p class="mb-5">And this is the same for lots of other apps not just Firefox. They will also take up more space on your system, because they hold those duplicate packages that cannot be individually tracked by apt anymore. Granted, they're not very big packages so it’s not a huge thing, but for Ubuntu, an OS that prides itself for running on small footprints, again it does not gain any points for these choices. Since Ubuntu 16.04 and up, the default way to install new software through the GUI is through the software center. That is, if you're indeed not aware of the fact that you could be installing .deb files from the command line, and you should be if you take any pride in your Linux OS.</p>
+                
+                <p class="mb-5">What’s worse is that since Ubuntu 22.04 the Firefox Snap version is made default in preference of the .deb version, and on top of that, they also completely changed the way APT handles Firefox without any notifications or warnings. Now in version 22.04, when you use command “ apt install firefox”, your system will install the Snap package by default as opposed to the .deb, which is not at all how APT has ever worked before. This is very counter intuitive and a bit sneaky, considering we have had ‘snap install’  commands to perform those exact operations for a while now, and the systems have worked along side each other just fine all this time. Forcing people to use a snap instead of a deb and then just changing around the commands to be something else is not the way we do things!</p>
+                <p class="mb-5">By extension, this also means anyone who is not aware of this huge architectural design change in Ubuntu 22.04 could be having a severely downgraded user experience, simply by using all the Ubuntu default installed software. And I might add, any new software you would additionally install through the software center will also always be a Snap, since the Software Store in Ubuntu is now just a skin for Snapd. You need to really go out of your way to find a .deb file nowadays, or compile from source code.</p>
+                <p class="mb-5">When it comes to development for snaps, you have a confinement levels devmode, classic and strict. Strict, denies all system access other than through a Snaps interface, where classic level permits full system-level access, which is analogous to a regular .deb or rpm installation.
+                Ubuntu documentation states the the vast majority of Snaps should be able to attain strict confinement and not classic. But in practice, this seems to not be the case at all, or devs are not paying attention while writing apps I guess.</p>
+                <p class="mb-5">They are also just incredibly poorly maintained, considering the fact that they don’t even adhere to any native GNOME system theming by default, while that is kind of the entire point of GNOME themes, and again, in some sense also GNOME’s design philosophy. And yes, I know you can set a default theme for snaps, that is also often a bit broken unfortunately, and it just adds again more manual labor on a task that automatically before.</p>
+                <p class="mb-5">The fourth and one of the most serious problems I think is the permissions for Snaps (even after setting them via the permissions settings panel or through the command line) are always so wonky.
+                I’m not sure if something goes wrong with developers choosing incorrect security models for their snaps, or if I am always installing incorrectly. If ‘installing incorrectly’ is honestly even possible with snaps, because when I tested have done so on a vanilla Ubuntu install, all you can do is left click install, and it goes wrong plenty of times.</p>
+                <p class="mb-5">Honestly the Linux community in general need to start understanding their target audiences a bit better I feel sometimes. Stop trying to please everyone at once, it simply can’t be done. In my opinion, none of this would be an issue anyways, if the snapd system was just a nice little feature for those few select programs that you couldn’t go without it for. In my opinion, that should be 0 times, because I don’t even have Snapd installed anymore, but that’s besides the point. I can imagine some people liking it for whatever reason they choose to still use it.</p>
+                
+                <p class="mb-5">I am very confused as to who Canonical is catering their OS towards recently. 
+                When you look at all the stuff that’s not even included in even the latest version of Ubuntu in the current computer landscape of 2023, it's kind of insane that that kind of stuff is missing. 
+                Things I want to mention are: No volume slider, no ability to select audio interfaces/devices for headset or speakers, no out of the box hibernation and sleep functionality for laptops, no WiFi reload button, which means always have to turn off/on your whole WiFi interface, a broken software store that does not allow uninstalling, extremely poor support for hybrid-mode GPU laptops. (Bumblebee/Optimus anyone?) I could go on for a while like this about features that should really be present out of the box on an OS yet still aren’t.</p>
+                <p class="mb-5">But apparently there is time to make snapd! Honestly we are lucky as users that we have a community of dedicated devs developing GNOME extensions in their spare time to fix all that stuff that should be included by default in Ubuntu.Why are we pretending that the people that use this OS in any capacity are the same people that asked for snaps? Or do you not care about the end-users, but only the devs of Ubuntu? And then why would the devs like the snaps? I’m so confused lol.</p>
+                <p class="mb-5">Since I don't like to only rant, and also like to come up with solutions, let’s talk about some options. If we had just simply adhered to the same design that we have for the ubuntu-updates GUI window that was already a thing that existed, all of our lives (especially mine) would be so much better.
+                Remember, you have already made it before. You can do it again. You have the technology! 
+                Why are we not simply building a similar shell over dpkg/apt with the actual error logging that we can work with, as a software store, instead of Snapd! Just ike it already existed for ubuntu-updates!
+                </p>
+                <p class="mb-5">Having error logging is literally better than a white blank screen!
+                Then we could still improve the Snaps over time for them to be less horrible. Snaps still needed and need too much work before they become the default way to install. 
+                I have fantasies about Snapd being admitted for the mistake that it is soon, and it being dropped as a project. Then we can all return to using deb packages like good old boys and girls without a care in the world.</p>
+                <p class="mb-5">Or at least for my mental health, let Firefox be the only app you sneak into the dpkg system. 
+                Let dpkg be our last remaining beacon of hope with this abomination among our midst. With all that said and done with, until the time that Canonical finally nukes Snapd system into direct orbit, I suggest everyone running Ubuntu to all try a cheeky little .deb file instead of a Snap, they’re honestly pretty lit. Oh, and look up how to purge Snapd while you’re at it.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
