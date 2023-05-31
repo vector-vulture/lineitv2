@@ -27,16 +27,6 @@
     </nav>
     <!-- end of page navbar -->
 
-    <div class="theme-selector">
-        <a href="javascript:void(0)" class="spinner">
-            <i class="ti-paint-bucket"></i>
-        </a>
-        <div class="body">
-            <a href="javascript:void(0)" class="light"></a>
-            <a href="javascript:void(0)" class="dark"></a>
-        </div>
-    </div>  
- 
     <!-- page header -->
  
     
@@ -49,27 +39,27 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <a href="javascript:void(0)" class="card">
-                        <img src="../../assets/imgs/canonical.png" class="card-img" alt="project01">
+                        <img src="../../assets/imgs/snaps.jpg" class="card-img" alt="project01">
                         <div class="card-body">
                         </div>                  
                     </a>
                 </div>      
             </div>
 
-            <p class="mb-5">I just got done removing the Firefox Snap and purging all of snapd from my system again,
+            <p class="mb-5">I just got done removing the Firefox Snap off of my system again on Ubuntu,
                 so now comes the time I really have to vent about some of these design choices. 
-                I want to talk about Jammy Jellyfish. But more specifically, Snap packages in Ubuntu and why they are a bad plan, back then and still.
+                I want to talk about Ubuntu Jammy Jellyfish. But more specifically, Snap packages in Ubuntu and why they are a bad plan, back then and still.
                 But first let me preface this to answer the question from Ubuntu distro-haters: “Why are you on Ubuntu to begin with, it's a noob distro?”</p>
                 
                 <p class="mb-5">Call me crazy, I actually genuinely enjoy Canonicals’ implementation of the GNOME Desktop Environment. I also like how the syntax of Ubuntu/Debain commands makes a lot of sense to me, and they’re easy to remember. I used Arch Linux and Manjaro for a while as well, but I was getting kind of tired of having the rolling releases. While I do feel like Ubuntu on average is way too far behind when it comes to versions of software, I do much prefer having the stability of fixed released over being on the bleeding edge at all times like on Arch Linux. 
                 The fact that most stuff from the Arch Linux wiki works interchangeably between that and Ubuntu is nice too, since Arch has a much better documentation. </p>
-                <p class="mb-5">A lot of the configuration files and commands for lower the system components such as Linux service and sys manager (systemd), the X Window System (x11) and the Grand Unified Bootloader, (GRUB) of course all work the same too, and it’s all in all just less of a hassle.</p>
+                <p class="mb-5">A lot of the configuration files and commands for lower the system components such as Linux service and sys manager (systemd), the X Window System (x11) and the Grand Unified Bootloader, (GRUB) of course all work the same too. All in all, it's just less of a hassle than Arch.</p>
                 <p class="mb-5">Despite my apparently innate hatred for Ubuntu’s Snap packages, on average I think Ubuntu is an amazing template to build your own Linux workstation on. Especially for people that don’t feel the need to dive as deep into documentation as Arch requires you to do. Kali’s default toolset is great, but on average I don’t actually like to sit and spend a lot of time working inside a Kali box at all. I think for an actual distro to work in, it’s highly overrated. In any case, this rant was not about Linux distro’s or why I like using this one anyways, it’s about why snaps suck.</p>
                 <p class="mb-5">So first, a small intro for the uninitiated. APT is the ‘Advanced Package Tool’ in Ubuntu/Debian.
                 APT was always the 'main' way of installing packages to the system. Actually, apt is the front-end functionality that talks to the underlying functionality called dpkg. In practice, the 'apt install' command for example, creates a topological list of all the packages, and then calls the dpkg function in the most optimal order to install these. 
                 Of course, nothing in this world works perfectly, and neither does dpkg.</p>
                 <p class="mb-5">Especially in a situation where you want to install 2 different versions of the exact same package you will run into issues. This is not really an issue with dpkg itself, but more with not-containerizing, I suppose. It could definitely improve at these types of resolving dependency-conflicts a lot better, as far as that is possible without introducing the type of sand-boxing that snaps do.</p>
-                <p class="mb-5">So snap packages came by and kind fixed this issue of not being able to install 2 different version of that same packages. They achieve this simply by being these self-contained apps running inside their own sandboxes with some mediated access to the underlying host system. As such, they don’t care about any duplicate packages outside of their sandbox, and you can always install your applications regardless.</p>
+                <p class="mb-5">So snap packages came by and kind fixed this issue of not being able to install 2 different version of that same packages. They achieve this simply by being these self-contained apps running inside their own sandboxes with some mediated access to the underlying host system. As such, they don’t care about any duplicate packages outside of their sandbox, and you can always install themselves regardless.</p>
                 
                 <p class="mb-5">The above solution that Snaps provide is unfortunately also the exact reason that they end up working so much worse than all of their deb counterparts in most situations.
                 Snaps are, as we just discussed, small virtual boxes/containers, similar to flatpaks on other distro’s. Yes, it’s nice that you're not required to chase any additional required packages for the main
@@ -89,9 +79,7 @@
                 <p class="mb-5">By extension, this also means anyone who is not aware of this huge architectural design change in Ubuntu 22.04 could be having a severely downgraded user experience, simply by using all the Ubuntu default installed software. And I might add, any new software you would additionally install through the software center will also always be a Snap, since the Software Store in Ubuntu is now just a skin for Snapd. You need to really go out of your way to find a .deb file nowadays, or compile from source code.</p>
                 <p class="mb-5">When it comes to development for snaps, you have a confinement levels devmode, classic and strict. Strict, denies all system access other than through a Snaps interface, where classic level permits full system-level access, which is analogous to a regular .deb or rpm installation.
                 Ubuntu documentation states the the vast majority of Snaps should be able to attain strict confinement and not classic. But in practice, this seems to not be the case at all, or devs are not paying attention while writing apps I guess.</p>
-                <p class="mb-5">They are also just incredibly poorly maintained, considering the fact that they don’t even adhere to any native GNOME system theming by default, while that is kind of the entire point of GNOME themes, and again, in some sense also GNOME’s design philosophy. And yes, I know you can set a default theme for snaps, that is also often a bit broken unfortunately, and it just adds again more manual labor on a task that automatically before.</p>
-                <p class="mb-5">The fourth and one of the most serious problems I think is the permissions for Snaps (even after setting them via the permissions settings panel or through the command line) are always so wonky.
-                I’m not sure if something goes wrong with developers choosing incorrect security models for their snaps, or if I am always installing incorrectly. If ‘installing incorrectly’ is honestly even possible with snaps, because when I tested have done so on a vanilla Ubuntu install, all you can do is left click install, and it goes wrong plenty of times.</p>
+                <p class="mb-5">They are also just incredibly poorly maintained, considering the fact that they don’t even adhere to any native GNOME system theming by default, while that is kind of the entire point of GNOME themes, and again, in some sense also GNOME’s design philosophy. And yes, I know you can set a default theme for snaps, that is also often a bit broken unfortunately, and it just adds more steps to installing things if you want them to look good.</p>
                 <p class="mb-5">Honestly the Linux community in general need to start understanding their target audiences a bit better I feel sometimes. Stop trying to please everyone at once, it simply can’t be done. In my opinion, none of this would be an issue anyways, if the snapd system was just a nice little feature for those few select programs that you couldn’t go without it for. In my opinion, that should be 0 times, because I don’t even have Snapd installed anymore, but that’s besides the point. I can imagine some people liking it for whatever reason they choose to still use it.</p>
                 
                 <p class="mb-5">I am very confused as to who Canonical is catering their OS towards recently. 
