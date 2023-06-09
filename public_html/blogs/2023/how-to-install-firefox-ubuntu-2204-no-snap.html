@@ -48,7 +48,7 @@
 
             <p class="mb-5">So since Ubuntu version 22.04, Canonical is defaulting to using the snap version of firefox on a new install. This is bad for many reasons, I wrote a seperate article about it, you can read it here:</p>
 
-            <p class="mb-5"><a href="../../blogs/2022/rantonsnaps.html">Rant on Snaps and open letter to Canonical Linux</p>
+            <p class="mb-5"><a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html">Rant on Snaps and open letter to Canonical Linux</p>
                 
                 <p class="mb-5">In the case of the firefox snap package it’s bad for the following reasons.
                 1. The snap is very slow, on average from cold boot to start like 30-40% slower to open the app compared to the .deb or builds variant of the software.
@@ -56,8 +56,8 @@
                 3. Some core functionalities, if unlucky, don’t work well, such as being able to only save downloaded files in tmp directory.
                 4. It breaks the normal installation of the gnome-shell which allows you to run GNOME extensions.</p>
                 
-                <p class="mb-5">Because we are not animals, we are going to replace the snap for a version that works properly. First we will remove the firefox snap. You can install another browser such as chrome as a backup.
-                "sudo snap remove firefox"</p>
+                <p class="mb-5">Because we are not animals, we are not animale, we are going to replace the snap for a version that works properly. First we will remove the firefox snap. You can install another browser such as chrome as a backup.
+                So first on the commandline do a: "sudo snap remove firefox"</p>
                 
                 <p class="mb-5">Then we will install wget, if not installed yet:
                 "sudo apt install wget"</p>
@@ -65,30 +65,30 @@
                 <p class="mb-5">Then we will install the following required and recommended packages:
                 "sudo apt install libgtk-3-dev libglib2.0-0 libglib2.0-dev gir1.2-pango-1.0 libstdc++6 libdata-hal-perl"</p>
                 
-                <p class="mb-5">Go to the Firefox download page on: https://www.mozilla.org/en-US/firefox/linux/ 
+                <p class="mb-5">Go to Firefox websites download page for Linux advanced users on: https://www.mozilla.org/en-US/firefox/linux/ 
                 and click on the ‘Download Now’ button.</p>
                 
-                <p class="mb-5">Now change directory to Downloads: "cd ~/Downloads"</p>
+                <p class="mb-5">In the terminal change directory to Downloads: "cd ~/Downloads"</p>
                 
-                <p class="mb-5">unpack the archive: "tar xjf firefox-*.tar.bz2"</p>
+                <p class="mb-5">Unpack the archive with: "tar xjf firefox-*.tar.bz2"</p>
                 
-                <p class="mb-5">now change to the root user: "sudo su"</p>
+                <p class="mb-5">Now change to the root useraccount on the system: "sudo su". All next lines will be as root until we exit the account.</p>
                 
-                <p class="mb-5">Now let's move the firefox files directory to the /opt directory: "mv firefox /opt"</p>
+                <p class="mb-5">Now let's move the firefox files directory to the /opt directory with "mv firefox /opt"</p>
                 
                 <p class="mb-5">Symlink the executable:
                 "ln -s /opt/firefox/firefox /usr/local/bin/firefox"</p>
                 
-                <p class="mb-5">download a copy of the FF desktop icon file and place it in /usr/local/share/applications.</p>
+                <p class="mb-5">download a copy of the Firefox desktop icon file and place it in /usr/local/share/applications with:</p>
 
                 <p class="mb-5">"wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications"</p>
                 
-                <p class="mb-5">Now exit root user with: "exit"</p>
+                <p class="mb-5">Now exit the root user account with command: "exit". You should have went back to your regular user.</p>
                 
                 <p class="mb-5">To confirm successful install open the application with the new icon that you can now find in ‘Applications’ or by searching Firefox in the search. Type 'about:support' in the URL-bar in Firefox.
                 Confirm there are no errors or warnings and that the Application Binary value equals "/opt/firefox/firefox-bin".</p>
 
-                <p class="mb-5">Enjoy your fast new version of Firefox.</p>
+                <p class="mb-5">Now go and enjoy your fast new version of Firefox.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 

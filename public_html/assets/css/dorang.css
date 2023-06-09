@@ -182,6 +182,7 @@ a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
 }
 
 a:not([href]):not([tabindex]):focus {
+  color: inherit;
   outline: 0;
 }
 
