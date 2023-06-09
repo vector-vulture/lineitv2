@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Dorang landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Line-IT</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="../../assets/vendors/themify-icons/css/themify-icons.css">
+
+    <!-- Bootstrap + Dorang main styles -->
+	<link rel="stylesheet" href="../../assets/css/dorang.css">
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home" class="dark-theme">
+    
+    <!-- page navbar -->
+    <nav class="page-navbar" data-spy="affix" data-offset-top="10">
+        <ul class="nav-navbar container">
+            <li class="nav-item"><a href="../../index.html" class="nav-link">Security Library</a></li>
+            <li class="nav-item"><a href="../../techblogs.html" class="nav-link">Tech Blog</a></li>
+            <li class="nav-item"><a href="../../index.html" class="nav-link"><img src="../../assets/imgs/placeholder.svg" alt="Arch-Linux-logo"></a></li>
+            <li class="nav-item"><a href="../../projects.html" class="nav-link">Other Projects</a></li>
+            <li class="nav-item"><a href="../../about.html" class="nav-link">About Me</a></li>
+        </ul>
+    </nav>
+    <!-- end of page navbar -->
+
+    <!-- page header -->
+ 
+    
+    <!-- end of page header -->
+
+    <div class="container page-container">
+        <div class="col-md-10 col-lg-8 m-auto">
+            <h6 class="title mb-4 mt-5 pt-5">How to: Completely remove Snapd from Ubuntu 22.04</h6>
+
+            <div class="row">
+                    <a href="../../blogs/2023/how-to-remove-snapd-ubuntu-2204.html" class="card">
+                        <img src="../../assets/imgs/snaps.jpg" class="card-img" alt="how-to-remove-snapd-ubuntu-2204">
+                        <div class="card-body">
+                        </div>                  
+                    </a>  
+            </div>
+
+            <h6 class="title">Snapd</h6>
+
+            <p class="mb-5">
+                So since Ubuntu version 22.04, Canonical is defaulting to using the snap version of Firefox on a new install. This is bad for many reasons, I wrote a separate article about that, you can read about it here:<p>
+                
+                <p class="mb-5"><a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html">Click here to read more on why snapd is bad and should feel bad!</p>
+                
+                <p class="mb-5">Because I’m sick of snaps and them being installed to my system I tend to remove it all entirely, in this guide we will be going over how to do that.<p>
+                
+                <p class="mb-5">I will show you how to remove all snap packages from your system, as well as removing the snap software store itself, all the daemon services and finally purging the .deb package for snapd off of our system.<p>
+                
+                <p class="mb-5">Warning that this will obviously 1.) stop all snaps you have installed from working, and 2.) might interfere with the correct functionality of the canonical-livepatch (this is not enabled by default and only for paid subscription support users) since this is only available in a snap package.
+                                You should always be able to find a non-snap version of all other software, usually the .deb works best.<p>
+                
+                <h6 class="title">Uninstalling all Snaps</h6>
+                
+                <p class="mb-5">First lets kick off a “sudo snap list” command to see all the snaps we currently have installed.<p>
+                
+                <p class="mb-5">Now lets stop all the snapd services with the oneliner: “sudo systemctl disable snapd.service && sudo systemctl disable snapd.socket && sudo systemctl disable snapd.seeded.service"<p>
+                
+                <p class="mb-5">Now we will remove each snap, one by one. You have to remove them all in a certain order, because some snaps, such as for example core18, depend on other snaps. Just remove them where possible until eventually no more snaps are installed in the list. Don't worry about losing core functionalities of your system.
+                    It should not break anything except for your webbrowser if you use the Firefox snap. Install an alternative browser for now like Google Chrome if that's the case.<p>
+                
+                <p class="mb-5">Then, remove any leftover cached snap data: “sudo rm -rf /var/cache/snapd/”<p>
+                
+                <p class="mb-5">Now purge/autoremove the actual snapd dpkg package using the following command: “sudo apt autoremove –purge snapd”<p>
+                
+                <p class="mb-5">Because this action does not clear our home directory automatically, to clear it we have to perform a: “rm -rf ~/snap”<p>
+                
+                <p class="mb-5">Since you probably have just removed the Firefox snap, here’s a guide on how to install the Firefox ‘Builds’ version which is much much better.<p>
+                
+                <p class="mb-5"><a href="../../blogs/2023/how-to-install-firefox-ubuntu-2204-no-snap.html">Click here to read how to install Firefox 'Builds' version</p>
+                <!-- end of row -->
+    </div> <!-- end of page container -->
+
+</div><!-- end of container -->
+</div><!-- end of pre footer -->
+
+<!-- footer -->
+<footer class="footer">
+<p class="infos"><a>Published 9th of June 2023 </a></p>
+</footer><!-- end of footer -->
+
+<!-- core  -->
+<script src="../../assets/vendors/jquery/jquery-3.4.1.js"></script>
+<script src="../../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+<!-- bootstrap affix -->
+<script src="../../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+<!-- Dorang js -->
+<script src="../../assets/js/dorang.js"></script>
+
+</body>
+</html>
