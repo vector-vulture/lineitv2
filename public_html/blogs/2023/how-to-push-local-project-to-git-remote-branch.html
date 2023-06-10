@@ -38,7 +38,7 @@
 
             <div class="row">
                     <a href="../../blogs/2023/how-to-push-local-project-to-git-remote-branch.html" class="card">
-                        <img src="../../assets/imgs/gitpush.jpg" class="card-img" alt="how-to-push-local-project-to-git-remote-branch">
+                        <img src="../../assets/imgs/gitpush.png" class="card-img" alt="how-to-push-local-project-to-git-remote-branch">
                         <div class="card-body">
                         </div>                  
                     </a>  
@@ -51,11 +51,11 @@
             
             <p class="mb-5">With these preliminaries out of the way, let’s get started. In our example we will have a directory that contains a project, let’s say /home/user1/dev/project1. This will be our current working directory. All commands will be performed inside the project directory, unless stated otherwise.</p>
             
-            <p class="mb-5">To initialize a local git repo say: “ git init -b main”  where -b is telling git to use branch main.</p>
+            <p class="mb-5">To initialize a local git repo say: “git init -b main”  where -b is telling git to use branch main.</p>
             
             <p class="mb-5">Add all the files in current project dir with “git add .”  where there period symbol means add everything inside current directory, be mindful to include it.</p>
             
-            <p class="mb-5">To commit all files or changes do: “ git commit -m ‘First commit’ “ where the -m flag is simply the comment sent with the commit. Since the comments usually include whitespaces, you must put them in single or double quotations.</p>
+            <p class="mb-5">To commit all files or changes do: “git commit -m ‘First commit’“ where the -m flag is simply the comment sent with the commit. Since the comments usually include whitespaces, you must put them in single or double quotations.</p>
             
             <p class="mb-5">Now, before we push anything to any remote branch, we first have to create it.
             We can do that with the "gh repo create" subcommand and going through the interactive prompt.</p>
@@ -68,15 +68,15 @@
             
             <p class="mb-5">Add optional description. Choose visibility default = public or private as desired.</p>
             
-            <p class="mb-5">On the question ‘Add a remote?” select Yes. This will create our remote branch. What should the new remote be called? I recommend default: origin.</p>
+            <p class="mb-5">On the question 'Add a remote?' select Yes. This will create our remote branch. What should the new remote be called? I recommend default: origin.</p>
             
-            <p class="mb-5">Now we can “ git push”, and you will see that git has enumerated, compressed and wrote all the objects to the upstream remote branch. When you look at your online GitHub, a new repo with the correct name should now be created, and your commit’s should be visible as recent.</p>
+            <p class="mb-5">Now we can “git push”, and you will see that git has enumerated, compressed and wrote all the objects to the upstream remote branch. When you look at your online GitHub, a new repo with the correct name should now be created, and your commit’s should be visible as recent.</p>
             
             <h6 class="title">Adding new files to the project</h6>
             
-            <p class="mb-5">We wont have a readme.md file yet, and this creates an opportunity to explain how to add new files to the repo when you created one, since using a "git commit ." won't work when you added new files to the repo, as opposed to changing existing files.</p>
+            <p class="mb-5">We won't have a readme.md file yet, and this creates an opportunity to explain how to add new files to the repo when you created one, since using a "git commit ." won't work when you added new files to the repo, as opposed to changing existing files.</p>
             
-            <p class="mb-5">Create a readme with “touch readme.md”  and perform: “ git commit . -m ‘test’ “</p>
+            <p class="mb-5">Create a readme with “touch readme.md”  and perform: “git commit . -m ‘test’“</p>
             
             <p class="mb-5">You will see that the branch displays as up to date with origin/main, and nothing new was added to the commit, because the tracked files were not changed. We have to add the new readme.md file to the local repo's file staging index for it to actually track our new file.</p>
             
@@ -90,15 +90,15 @@
             
             <p class="mb-5">If you deleted a file from the local repo and noticed it does not get deleted remote side, inside the local working directory perform command “git rm FILENAME”</p>
             
-            <p class="mb-5">“After that use "git commit . -m ‘Removed a specific file’ “</p>
+            <p class="mb-5">After that use "git commit . -m ‘Removed a specific file’“</p>
             
-            <p class="mb-5">And then perform “git push” to make sure the file also gets deleted remote.
+            <p class="mb-5">And then perform “git push” to make sure the file also gets deleted remotely.
             The inverse could also happen, where you per chance removed a file from the online repository and want to also delete this locally, you can simply perform a git pull inside current working directory, and then you will have the most current version of the project with that particular file deleted.</p>
             
             <p class="mb-5">So to recap, we have learned a little bit about local and remote Git repo's. We have observed a difference between comitting changes from existing files,
                 and completely new files being added to the project. We also took a look at deleting files on either side, and how this affects your git command usage.</p>
              
-            <p class="mb-5">This concludes my small tutorial on how to initialize a local git project repository and how push it to a new remote. As well as how to deal with basic file changes in either the local or remote branch environment.</p>
+            <p class="mb-5">This concludes my small tutorial on how to initialize a local git project repository and how to push it to a new remote. As well as how to deal with basic file changes in either the local or remote branch environment.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
