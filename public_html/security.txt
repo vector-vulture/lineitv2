@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: linnaeuslindquist@gmail.com
+Expires: 2024-02-12T23:00:00.000Z
+Canonical: https://lineit.nl/security.txt
+Encryption: https://lineit.nl/gpg.asc
+-----BEGIN PGP SIGNATURE-----
+
+iQHQBAABCgA6FiEEyOZMqaTREOihoVvUIu0Hy3/SSwsFAmSWFEIcHGxpbm5hZXVz
+bGluZHF1aXN0QGdtYWlsLmNvbQAKCRAi7QfLf9JLC1/aDADMs8hsL/yg2Xe2sTuD
+rFcUp5WQx7KprRMLvBeeMcxgi6xI4m4tNCNHEStL312b3j28ZZ5QEx9iGC1SSnRP
+0cG9nTYn3a18JPDRgIKdKOblUYNrWphJuWrSajG/NffwrcFkxX774O2bF56GNo1/
+4fqB/jGRo2bchnumsLdX2e4uzqoXqdGSq6o+RZZfloW0ULxxdqbgIG/gXUcZL63n
+aBT5ikgynyiSrvThIoRYSNvN7Pl+SB6DKmsO0ErrG50fQE70STWbJlaKJryHew9w
+sNuMth4WT8S29yelRgZcpi+2aePHMd8tFJO/5W+yd8ctRncKlIJtv8ehQebQuciI
+2jABFqN9y83e7vJ5APaFoEXgUk1WbMPJA4YEr626cy3rrAn6nEFEjzkeztTWS01N
+zLhzgL4GhwwWGm75GOm9jNmTsNQ+vWmVRQfwEN6krrV8oN/SdYMiS5wSIdcGXWrP
+gHYwdB35qhaxVEkpsQZ85yM/LP4p3JETJ9TsVfXelIv+7as=
+=eW0T
+-----END PGP SIGNATURE-----
