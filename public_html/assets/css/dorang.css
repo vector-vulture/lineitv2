@@ -10378,48 +10378,6 @@ a:hover {
   }
 }
 
-.theme-selector.show {
-  left: calc(100% - 200px);
-}
-
-.theme-selector .spinner {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-right: 1px solid rgba(173, 181, 189, 0.2);
-}
-
-.theme-selector .spinner i {
-  color: #fff;
-}
-
-.theme-selector .body {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  text-align: center;
-}
-
-.theme-selector .body a {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-top: 15px;
-}
-
-.theme-selector .body a.light {
-  background: #fff;
-  border: 2px solid #343a40;
-}
-
-.theme-selector .body a.dark {
-  background: #343a40;
-  border: 2px solid #fff;
-}
-
 .footer {
   text-align:center;
   width: 100%;
