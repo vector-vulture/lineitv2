@@ -10278,7 +10278,7 @@ a:hover {
 }
 
 .page-navbar .nav-navbar .nav-link img {
-  width: calc(25px + (45 - 25) * ((100vw - 300px) / (1300 - 300)));
+  width: calc(25px + (45 - 25) * ((50vw - 150px) / (1300 - 300)));
 }
 
 .page-navbar .nav-navbar .search {
