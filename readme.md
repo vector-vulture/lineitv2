@@ -8,5 +8,5 @@ I used a free bootstrap template from @Devcrud, shoutout to him for the bootstra
 
 Everything else done by me.
 
-see LICENSE.txt for more legal info.
+see LICENSE.txt for more license info.
 
