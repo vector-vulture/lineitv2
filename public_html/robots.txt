@@ -1,4 +1,8 @@
 User-agent: Googlebot
 Disallow:
 
+User-agent: *
+Disallow: /
+
 Sitemap: https://www.lineit.nl/sitemap.xml
+
