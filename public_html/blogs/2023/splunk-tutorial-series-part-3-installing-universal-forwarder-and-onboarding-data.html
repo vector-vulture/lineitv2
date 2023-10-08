@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A geek and creative with many passions. Currently employed at cyber security firm Fox-IT @ NCC Group.">
     <meta name="linnaeus lindquist" content="LineIT.nl">
-    <title>LinéIT.nl - Splunk Tutorial Series - Part 1: Installing Splunk Enterprise 9.1.0 (On Ubuntu Server 22.04 LTS)</title>
+    <title>LinéIT.nl - Splunk Tutorial Series - Part 3: Installing Universal Forwarder and onboarding data</title>
     <!-- font icons -->
     <link rel="stylesheet" href="../../assets/vendors/themify-icons/css/themify-icons.css">
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
@@ -45,17 +45,14 @@
 
     <div class="container page-container">
         <div class="col-md-10 col-lg-8 m-auto">
-            <h6 class="title mb-4 mt-5 pt-5">Splunk Tutorial Series - Part 1: Installing Splunk Enterprise 9.1.0 (On Ubuntu Server 22.04 LTS)</h6>
+            <h6 class="title mb-4 mt-5 pt-5">Splunk Tutorial Series - Part 3: Installing Universal Forwarder and onboarding data</h6>
             <div class="row">
-                <iframe width="1000" height="500" src="https://www.youtube.com/embed/6ODm6FuuNUo" title="Splunk Tutorial Series - Part 1: Installing Splunk Enterprise 9.1.0 (On Ubuntu Server 22.04 LTS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="1000" height="500" src="https://www.youtube.com/embed/0nfkdB5j1_8" title="Splunk Tutorial Series - Part 3: Installing Universal Forwarder and onboarding data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
-            <p class="mb-5">In this first video in a multi-part video series about Splunk, we will be installing Splunk Enterprise on Ubuntu server 22.04 LTS edition.</p>
-
-            <p class="mb-5">We will go over some of Splunk's minimum requirements,  the installation itself, and configuring the permissions from the root user over to the splunk user after the installation.
-                After that, we will troubleshoot any possible KVstore issues that could arise from switching over the permissions of Splunk Enterprise.</p>
-            
-            <p class="mb-5">I had to go back and rectify a typo in my admin account by reinstalling Splunk, so that already fixed the KVstore problem for me, but I still included the steps to fix it regardless.</p>
+            <p class="mb-5">Hi guys! In this video, which will be the third video in the Splunk tutorial series, we are going to install the Splunk Universal Forwarder on Ubuntu Server 22.04 LTS.</p>
+            <p class="mb-5">After the installation we will configure the appropriate inputs.conf and outputs.conf files, to make sure our data gets sent to Splunk Enterprise.</p>   
+            <p class="mb-5">We will also look at some required firewall changes, and then verify if all of our data arrived inside Splunk.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
@@ -64,7 +61,7 @@
 
 <!-- footer -->
 <footer class="footer">
-<p class="infos"><a>Published 24th of July 2023 </a></p>
+<p class="infos"><a>Published 4th of September 2023 </a></p>
 </footer><!-- end of footer -->
 
 <!-- core  -->
