@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A geek and creative with many passions. Currently employed at cyber security firm Fox-IT @ NCC Group.">
     <meta name="linnaeus lindquist" content="LineIT.nl">
-    <title> LinéIT.nl - How to push local project to ne git remote branch</title>
+    <title> LinéIT.nl - How to push local project to git remote repository</title>
     <!-- font icons -->
     <link rel="stylesheet" href="../../assets/vendors/themify-icons/css/themify-icons.css">
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
     <!-- Bootstrap + Dorang main styles -->
 	<link rel="stylesheet" href="../../assets/css/dorang.css">
+    <!-- JavaScript syntax highlighter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -46,71 +48,114 @@
 
     <div class="container page-container">
         <div class="col-md-10 col-lg-8 m-auto">
-            <h6 class="title mb-4 mt-5 pt-5">Pushing local code to a new GitHub remote branch. Quick refresher!</h6>
+            <h6 class="title mb-4 mt-5 pt-5">Pushing local code to a new GitHub remote repository. Quick refresher!</h6>
 
             <div class="row">
-                    <a href="../../blogs/2023/how-to-push-local-project-to-git-remote-branch.html" class="card">
+                    <a href="../../blogs/2023/how-to-push-local-project-to-git-remote-branch.html" class="card"></a> 
                         <img src="../../assets/imgs/gitpush.png" class="card-img" alt="how-to-push-local-project-to-git-remote-branch">
                         <div class="card-body">
                         </div>                  
                     </a>  
             </div>
 
-            <h6 class="title">Git Local and Remote Repository</h6>
+            <h6 class="title">Git local and remote repository</h6>
 
             <p class="mb-5">
-            This is going to be a quick recap on how to work with local code that you want to push to a remote branch. We will talk about how we commit changes to edited files or stage new files. This guide assumes you have 1) an existing GitHub account, 2) have git installed and have setup your github authentication on commandline using personal access tokens. And 3) Have some kind of code project you want to create an online repo for on GitHub. If you have not setup working authentication yet, refer to the documentation for Personal Access Tokens: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens</p>
+            This is going to be a quick recap on how to work with local code that you want to push to a remote repository. We will talk about how we commit changes to edited files or stage new files.
+            This guide assumes you have:</p>
             
-            <p class="mb-5">With these preliminaries out of the way, let’s get started. In our example we will have a directory that contains a project, let’s say /home/user1/dev/project1. This will be our current working directory. All commands will be performed inside the project directory, unless stated otherwise.</p>
+            <p class="mb-5">1. an existing GitHub account</p>
+            <p class="mb-5">2. have git installed and have setup your github authentication on the commandline using personal access tokens.</p>
+            <p class="mb-5">3. Have some kind of code project you want to create an online repo for on GitHub. If you have not setup working authentication yet, refer to the documentation for 
+                Personal Access Tokens on:</p>
+
+            <p class="mb-5"><pre><code class="language-html">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens</code></pre></p>
             
-            <p class="mb-5">To initialize a local git repo say: “git init -b main”  where -b is telling git to use branch main.</p>
+            <p class="mb-5">With these preliminaries out of the way, let’s get started. In our example we will have a directory that contains a project, let’s say <code>/home/user1/dev/project1.</code>
+                This will be our current working directory. All commands will be performed inside the project directory, unless stated otherwise.</p>
             
-            <p class="mb-5">Add all the files in current project dir with “git add .”  where there period symbol means add everything inside current directory, be mindful to include it.</p>
+            <p class="mb-5">To initialize a local git repository say:</p>
+
+            <p class="mb-5"><pre><code class="language-bash">git init -b main</code></pre></p>
+
+            <p class="mb-5">Where the <code>-b</code> flag is telling Git to start using branch main on the local instance.</p>
             
-            <p class="mb-5">To commit all files or changes do: “git commit -m ‘First commit’“ where the -m flag is simply the comment sent with the commit. Since the comments usually include whitespaces, you must put them in single or double quotations.</p>
+            <p class="mb-5">Add all the files in current code project directory with:</p>
+
+            <p class="mb-5"><pre><code class="language-bash">git add .</code></pre></p>
+
+            <p class="mb-5">Where the <code>.</code> symbol means add everything inside current directory, be mindful to include it.</p>
             
-            <p class="mb-5">Now, before we push anything to any remote branch, we first have to create it.
-            We can do that with the "gh repo create" subcommand and going through the interactive prompt.</p>
+            <p class="mb-5">To commit all files or changes use the following:</p>
+
+            <p class="mb-5"><pre><code class="language-html">git commit -m ‘First commit’</code></pre></p>
             
-            <p class="mb-5">When asked, select ‘push local repository to remote’.</p>
+            <p class="mb-5">where the <code>-m</code> flag is the Message sent with the commit. Since the comments might include whitespaces, 
+            you must put them in single or double quotations.</p>
+
+            <p class="mb-5">Before we push anything to any remote repository, we first have to create it.
+            We can do that with the GitHub <code>gh repo create</code> subcommand and going through the interactive prompt.</p>
             
-            <p class="mb-5">Hit enter to tell Git that the path is the current working directory (notice the period symbol).</p> 
+            <p class="mb-5">When asked, select <code>push local repository to remote</code></p>
             
-            <p class="mb-5">Confirm default repository name (it will default to project folder name) or change as desired, hit ENTER.</p>
+            <p class="mb-5">Hit <code>enter</code> to tell Git that the path is the current working directory (notice the <code>.</code> symbol).</p> 
             
-            <p class="mb-5">Add optional description. Choose visibility default = public or private as desired.</p>
+            <p class="mb-5">Confirm default repository name (it will default to project folder name) or change as desired, hit <code>enter</code>.</p>
             
-            <p class="mb-5">On the question 'Add a remote?' select Yes. This will create our remote branch. What should the new remote be called? I recommend default: origin.</p>
+            <p class="mb-5">Add optional description. Choose visibility default <code>public</code> or <code>private</code> as desired.</p>
             
-            <p class="mb-5">Now we can “git push”, and you will see that git has enumerated, compressed and wrote all the objects to the upstream remote branch. When you look at your online GitHub, a new repo with the correct name should now be created, and your commit’s should be visible as recent.</p>
+            <p class="mb-5">On the question 'Add a remote?' select <code>yes</code>. This will create our remote branch. What should the new remote be called? I use the default: <code>origin</code>.</p>
+            
+            <p class="mb-5">Now we can use the <code>git push</code> command and you will see that git has enumerated, compressed and wrote all the objects to the upstream remote branch. When you look at your online GitHub,
+                 a new repo with the given name should now be created, and your commits should be visible as most recent in the given branch name.</p>
             
             <h6 class="title">Adding new files to the project</h6>
             
-            <p class="mb-5">We won't have a readme.md file yet, and this creates an opportunity to explain how to add new files to the repo when you created one, since using a "git commit ." won't work when you added new files to the repo, as opposed to changing existing files.</p>
+            <p class="mb-5">We won't have a readme.md file yet, and this creates an opportunity to explain how to add new local files to the remote repository after creating them, since using <code>git commit .</code>
+                won't work when you've added new files. Only when making changes to existing files.</p>
             
-            <p class="mb-5">Create a readme with “touch readme.md”  and perform: “git commit . -m ‘test’“</p>
+            <p class="mb-5">Create a new readme file in the local repository with: </p>
+             
+            <p class="mb-5"><pre><code class="language-html">touch readme.md</code></pre></p>
+
+            <p class="mb-5">You can also add some text to the readme if you want. Then use the following command:</p>
+                
+            <p class="mb-5"><pre><code class="language-html">git commit . -m ‘test’</code></pre></p>
             
-            <p class="mb-5">You will see that the branch displays as up to date with origin/main, and nothing new was added to the commit, because the tracked files were not changed. We have to add the new readme.md file to the local repo's file staging index for it to actually track our new file.</p>
+            <p class="mb-5">You will see that the branch displays as up to date with <code>origin/main</code>, and nothing new was added to the commit, because the tracked files were not changed. 
+                We have to add the new readme.md file to the local repository file staging index for it to actually start tracking our new file.</p>
             
-            <p class="mb-5">First add our new file “git add readme.md”</p>
+            <p class="mb-5">First add our new file with: </p>
             
-            <p class="mb-5">Now create a git new commit with the command: “git commit . -m 'added a readme' file”</p>
+            <p class="mb-5"><pre><code class="language-html">git add readme.md</code></pre></p>
             
-            <p class="mb-5">Now perform another “git push” command and you will see it has worked this time.</p>
+            <p class="mb-5">Now create a git new commit with the command:</p>
+            
+            <p class="mb-5"><pre><code class="language-html">git commit . -m 'added a readme file'</code></pre></p>
+            
+            <p class="mb-5">Now perform another <code>git push</code> and you will see this time it has pushed the changed to the remote branch.</p>
 
             <h6 class="title">Deleting files from the project</h6>
             
-            <p class="mb-5">If you deleted a file from the local repo and noticed it does not get deleted remote side, inside the local working directory perform command “git rm FILENAME”</p>
+            <p class="mb-5">If you deleted a file from the local repo and noticed it does not get deleted remote side, inside the local working directory perform command:</p>
             
-            <p class="mb-5">After that use "git commit . -m ‘Removed a specific file’“</p>
+            <p class="mb-5"><pre><code class="language-html">git rm $FILENAME</code></pre></p>
             
-            <p class="mb-5">And then perform “git push” to make sure the file also gets deleted remotely.
-            The inverse could also happen, where you per chance removed a file from the online repository and want to also delete this locally, you can simply perform a git pull inside current working directory, and then you will have the most current version of the project with that particular file deleted.</p>
+            <p class="mb-5">Notice that this is not a regular linux <code>rm</code> command, but prefixed with <code>git</code>, which means it is a git subcommand and removed files
+                from the local git project, not the actual file from disk.</p>
             
-            <p class="mb-5">So to recap, we have learned a little bit about local and remote Git repo's. We have observed a difference between comitting changes from existing files,
-                and completely new files being added to the project. We also took a look at deleting files on either side, and how this affects your git command usage.</p>
+            <p class="mb-5">After that use:</p>
+            
+            <p class="mb-5"><pre><code class="language-html">git commit . -m ‘Removed a specific file’</code></pre></p>
+            
+            <p class="mb-5">And then perform another <code>git push</code> to make sure the file also gets deleted remote side.
+            The opposite could also happen, where you removed a file from the online repository, and want to delete this locally. You can then simply perform a <code>git pull</code> inside current working 
+            directory, and then you will have the most recent version of the project with the file deleted.</p>
+            
+            <p class="mb-5">So to recap. We have learned a little bit about local and remote Git branches and repositories. We have seen a difference between comitting changes from existing files,
+                and completely new files being added to a Git project. We also took a look at deleting files on either side, and how this affects your git command usage.</p>
              
-            <p class="mb-5">This concludes my small tutorial on how to initialize a local git project repository and how to push it to a new remote. As well as how to deal with basic file changes in either the local or remote branch environment.</p>
+            <p class="mb-5">This concludes my small tutorial on how to initialize a local git project repository and push it to a new remote.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
@@ -131,6 +176,10 @@
 
 <!-- Dorang js -->
 <script src="../../assets/js/dorang.js"></script>
+
+<!-- JavaScript syntax highlighter -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </body>
 </html>
