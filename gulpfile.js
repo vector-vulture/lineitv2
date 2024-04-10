@@ -54,7 +54,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest(paths.dist.css))
 });
 
-// Minify + Combine JS
+// Minify + Combine Javascript
 gulp.task('js', function() {
     return gulp.src(paths.src.js)
     .pipe(uglify())
