@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
     <!-- Bootstrap + Dorang main styles -->
 	<link rel="stylesheet" href="../../assets/css/dorang.css">
+    <!-- JavaScript syntax highlighter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -58,49 +60,51 @@
 
             <h6 class="title">Firefox as a Snap</h6>
 
-            <p class="mb-5">So since Ubuntu version 22.04, Canonical is defaulting to using the snap version of firefox on a new install. This is bad for many reasons, I wrote a seperate article about it, you can read it here:</p>
+                <p class="mb-5">So since Ubuntu version 22.04, Canonical is defaulting to using the snap version of Firefox on a new install. This is bad for many reasons, I wrote a seperate article about it, you can read it <a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html"><u>here</u></a>.<p>
+                
+                <p class="mb-5">Because we are not animals, we are not animale, we are going to replace the snap for a version that works better. First we will install Google Chrome before we remove the Firefox snap. You can delete Chrome afterwards if you want to.</p>
+                
+                <p class="mb-5">For Google Chrome we can find the deb file <a href="https://www.google.com/chrome/?brand=FKPE&ds_kid=43700051951685519&gad_source=1&gclid=CjwKCAjwrIixBhBbEiwACEqDJagq_ufABHFOrBKEJUFsbSQHGdS1Bcxga9gHkKDhYtMwPKbOF2McphoCOP0QAvD_BwE&gclsrc=aw.ds"><u>here</u></a>.<p>
+                
+                <p class="mb-5">Then install the downloaded file with the following command:</p>
+                
+                <p class="mb-5"><pre><code class="language-html">sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb</code></pre></p>
+            
+                <p class="mb-5">Then we will install wget, if not installed yet use: <code>sudo apt install wget</code></p>
+                
+                <p class="mb-5">Then we will install the following required and recommended packages with the following command:</p>
 
-            <p class="mb-5"><a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html">Rant on Snaps and open letter to Canonical Linux</a></p>
-                
-                <p class="mb-5">In the case of the firefox snap package it’s bad for the following reasons.
-                1. The snap is very slow when compared to the .deb or build variants of the software, on average from cold boot to start like 30-40% slower.
-                2. It breaks native GNOME system theming, which also defies the point of the entire GNOME design philosophy.
-                3. Some core functionalities, if unlucky, don’t work well, such as being able to only save downloaded files in tmp directory.
-                4. It breaks the normal installation of the gnome-shell which allows you to run GNOME extensions.</p>
-                
-                <p class="mb-5">Because we are not animals, we are not animale, we are going to replace the snap for a version that works properly. First we will remove the firefox snap. You can install another browser such as chrome as a backup.
-                So first on the commandline do a: "sudo snap remove firefox"</p>
-                
-                <p class="mb-5">Then we will install wget, if not installed yet:
-                "sudo apt install wget"</p>
-                
-                <p class="mb-5">Then we will install the following required and recommended packages:
-                "sudo apt install libgtk-3-dev libglib2.0-0 libglib2.0-dev gir1.2-pango-1.0 libstdc++6 libdata-hal-perl"</p>
-                
-                <p class="mb-5">Go to Firefox websites download page for Linux advanced users on: https://www.mozilla.org/en-US/firefox/linux/ 
-                and click on the ‘Download Now’ button.</p>
-                
-                <p class="mb-5">In the terminal change directory to Downloads: "cd ~/Downloads"</p>
-                
-                <p class="mb-5">Unpack the archive with: "tar xjf firefox-*.tar.bz2"</p>
-                
-                <p class="mb-5">Now change to the root useraccount on the system: "sudo su". All next lines will be as root until we exit the account.</p>
-                
-                <p class="mb-5">Now let's move the firefox files directory to the /opt directory with "mv firefox /opt"</p>
-                
-                <p class="mb-5">Symlink the executable:
-                "ln -s /opt/firefox/firefox /usr/local/bin/firefox"</p>
-                
-                <p class="mb-5">download a copy of the Firefox desktop icon file and place it in /usr/local/share/applications with:</p>
+                <p class="mb-5"><pre><code class="language-html">sudo apt install libgtk-3-dev libglib2.0-0 libglib2.0-dev gir1.2-pango-1.0 libstdc++6 libdata-hal-perl</code></pre></p>
 
-                <p class="mb-5">"wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications"</p>
-                
-                <p class="mb-5">Now exit the root user account with command: "exit". You should have gone back to your regular user.</p>
-                
-                <p class="mb-5">To confirm successful install open the application with the new icon that you can now find in ‘Applications’ or by searching Firefox in the search. Type 'about:support' in the URL-bar in Firefox.
-                Confirm there are no errors or warnings and that the Application Binary value equals "/opt/firefox/firefox-bin".</p>
+                <p class="mb-5">Visit the Firefox page for advanced users <a href="https://www.mozilla.org/en-US/firefox/linux/"><u>here</u></a> and click on the <code>Download For Linux 64bit</code> button.<p></p>
+            
+                <p class="mb-5">After the download inside your terminal change directory to the Downloads folder:</p>
 
-                <p class="mb-5">Now go and enjoy your fast new version of Firefox.</p>
+                <p class="mb-5"><pre><code class="language-html">cd ~/Downloads</code></pre></p>
+                
+                <p class="mb-5">Unpack the archive with:</p>
+
+                <p class="mb-5"><pre><code class="language-html">tar xjf firefox-*.tar.bz2</code></pre></p>
+                
+                <p class="mb-5">Now change to the root user on the system using <code>sudo su</code>. All the following commands will be as the <code>root</code> user until we exit the account.</p>
+                
+                <p class="mb-5">Let's move the Firefox files directory to the <code>/opt</code> directory with:</p>
+
+                <p class="mb-5"><pre><code class="language-html">mv firefox /opt</code></pre></p>
+                
+                <p class="mb-5">Symlink the executable:</p>
+                
+                <p class="mb-5"><pre><code class="language-html">ln -s /opt/firefox/firefox /usr/local/bin/firefox</code></pre></p>
+                
+                <p class="mb-5">Now we will download a copy of the Firefox desktop icon file, and place it in <code>/usr/local/share/applications</code> with:</p>
+
+                <p class="mb-5"><pre><code class="language-html">wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications</code></pre></p>
+                
+                <p class="mb-5">Now exit the root user account with command: <code>exit</code>. You should have gone back to your regular user now.</p>
+                
+                <p class="mb-5">To confirm successful installation, open the application with the new icon that we can now find under <code>Applications</code>, or by searching Firefox in the searchfield. After opening Firefox type 'about:support' in the URL-bar. Confirm there are no errors or warnings and that the Application Binary value equals <code>/opt/firefox/firefox-bin</code>.</p>
+
+                <p class="mb-5">Now go and enjoy your faster version of Firefox.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
@@ -121,6 +125,10 @@
 
 <!-- Dorang js -->
 <script src="../../assets/js/dorang.js"></script>
+
+<!-- JavaScript syntax highlighter -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </body>
 </html>

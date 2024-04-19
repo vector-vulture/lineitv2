@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
     <!-- Bootstrap + Dorang main styles -->
 	<link rel="stylesheet" href="../../assets/css/dorang.css">
+    <!-- JavaScript syntax highlighter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -58,36 +60,51 @@
 
             <h6 class="title">Snapd</h6>
 
-            <p class="mb-5">
-                So since Ubuntu version 22.04, Canonical is defaulting to using the snap version of Firefox on a new install. This is bad for many reasons, I wrote a separate article about that, you can read about it here:<p>
+                <p class="mb-5">So from version 22.04 and onwards, Canonical is making the choice to ship Ubuntu by default with the snap package version of Firefox. This is bad for many reasons, I wrote a separate article about that, you can read about it <a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html"><u>here</u></a>.<p>
                 
-                <p class="mb-5"><a href="../../blogs/2022/rant-on-snaps-open-letter-to-canonical-linux.html">Click here to read more on why snapd is bad and it should feel bad!</p>
+                <p class="mb-5">Because I’m quite sick with the performance of snaps and them being installed to my system, I tend to remove snapd entirely. In this guide we will be going over how to do that.<p>
                 
-                <p class="mb-5">Because I’m sick of snaps and them being installed to my system I tend to remove it all entirely, in this guide we will be going over how to do that.<p>
+                <p class="mb-5">We will remove the snap software store itself, all the daemon services and finally purging the deb package for snapd off of our system.<p>
                 
-                <p class="mb-5">I will show you how to remove all snap packages from your system, as well as removing the snap software store itself, all the daemon services and finally purging the .deb package for snapd off of our system.<p>
+                <p class="mb-5">Warning that this will obviously:</p> 
                 
-                <p class="mb-5">Warning that this will obviously 1.) stop all snaps you have installed from working, and 2.) might interfere with the correct functionality of the canonical-livepatch (this is not enabled by default and only for paid subscription support users) since this is only available in a snap package.
-                                You should always be able to find a non-snap version of all other software, usually the .deb works best.<p>
+                <p class="mb-5">1. Stop all snaps you have installed from working, which means also Firefox. We will install a new temporary browser and install non-snap Firefox after.</p>
+                    
+                <p class="mb-5">2. Interfere with the correct functionality of canonical-livepatch. This is not enabled by default and only for Ubuntu paid support users.</p>
+                    
+                <p class="mb-5">With snapd uninstalled, we can not install any snaps, or use the default software store anymore. However this is not a problem, because 99% of the time a deb package is available for software. Other non-deb alternatives also exist. So let's get started.<p>
                 
                 <h6 class="title">Uninstalling all Snaps</h6>
                 
-                <p class="mb-5">First lets kick off a “sudo snap list” command to see all the snaps we currently have installed.<p>
+                <p class="mb-5">First we will have to download a replacement browser for when the Firefox snap is uninstalled. At the end of this article I will link to a different article on how to reinstall the non snap version of Firefox.<p>
                 
-                <p class="mb-5">Now lets stop all the snapd services with the oneliner: “sudo systemctl disable snapd.service && sudo systemctl disable snapd.socket && sudo systemctl disable snapd.seeded.service"<p>
+                <p class="mb-5">Lets first install Google Chrome as a quick alternative browser, you can find the deb file <a href="https://www.google.com/chrome/?brand=FKPE&ds_kid=43700051951685519&gad_source=1&gclid=CjwKCAjwrIixBhBbEiwACEqDJagq_ufABHFOrBKEJUFsbSQHGdS1Bcxga9gHkKDhYtMwPKbOF2McphoCOP0QAvD_BwE&gclsrc=aw.ds"><u>here</u></a>.<p>
                 
-                <p class="mb-5">Now we will remove each snap, one by one. You have to remove them all in a certain order, because some snaps, such as for example core18, depend on other snaps. Just remove them where possible until eventually no more snaps are installed in the list. Don't worry about losing core functionalities of your system.
-                    It should not break anything except for your web browser if you use the Firefox snap. Install an alternative browser for now, like Google Chrome, if that's the case.<p>
+                <p class="mb-5">Install the downloaded file with the following command:</p>
                 
-                <p class="mb-5">Then, remove any leftover cached snap data: “sudo rm -rf /var/cache/snapd/”<p>
+                <p class="mb-5"><pre><code class="language-html">sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb</code></pre></p>
+
+                <p class="mb-5">Let's first list all of the snaps that are currently installed to the system using <code>sudo snap list</code>.</p>
                 
-                <p class="mb-5">Now purge/autoremove the actual snapd dpkg package using the following command: “sudo apt autoremove –purge snapd”<p>
+                <p class="mb-5">We can remove all snaps with the oneliner on the following line below. This command works on Ubuntu 22.04, you might have to modify some snap package names in the command below for different versions of Ubuntu.</p>
+
+                <p class="mb-5"><pre><code class="language-html">sudo snap remove gtk-common-themes gnome-42-2204 firefox snap-store snapd-desktop integration core22 bare snapd</code></pre></p>
+
+                <p class="mb-5">Let's stop all the related services with the following oneliner:<p>
+
+                <p class="mb-5"><pre><code class="language-html">sudo systemctl disable snapd.service && sudo systemctl disable snapd.socket && sudo systemctl disable snapd.seeded.service</code></pre></p>
+                               
+                <p class="mb-5">Now we can remove any leftover snap cache data with:</p>
                 
-                <p class="mb-5">Because this action does not clear our home directory automatically, to clear it we have to perform a: “rm -rf ~/snap”<p>
+                <p class="mb-5"><pre><code>sudo rm -rf /var/cache/snapd/</code></pre><p>
                 
-                <p class="mb-5">Since you probably have just removed the Firefox snap, here’s a guide on how to install the Firefox ‘Builds’ version which is much much better.<p>
+                <p class="mb-5">Now remove the snapd package with <code>sudo apt purge snapd</code><p>
                 
-                <p class="mb-5"><a href="../../blogs/2023/how-to-install-firefox-ubuntu-2204-no-snap.html">Click here to read how to install Firefox 'Builds' version</p>
+                <p class="mb-5">Because this action does not clear our home directory snap folder, to clear it we also have to perform:</p>
+                
+                <p class="mb-5"><pre><code>sudo rm -rf ~/snap</code></pre><p>
+                
+                <p class="mb-5">Since we have just removed the Firefox snap, <a href="../../blogs/2023/how-to-install-firefox-ubuntu-2204-no-snap.html"><u>here</u></a> is a guide on how to install the non-snap Firefox version.<p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
@@ -108,6 +125,10 @@
 
 <!-- Dorang js -->
 <script src="../../assets/js/dorang.js"></script>
+
+<!-- JavaScript syntax highlighter -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </body>
 </html>
