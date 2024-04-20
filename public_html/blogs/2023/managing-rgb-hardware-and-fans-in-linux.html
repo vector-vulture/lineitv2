@@ -11,6 +11,10 @@
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
     <!-- Bootstrap + Dorang main styles -->
 	<link rel="stylesheet" href="../../assets/css/dorang.css">
+    <!-- JavaScript syntax highlighter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css">
+</head>
+
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -58,10 +62,9 @@
 
             <h6 class="title">The Struggle</h6>
 
-            <p class="mb-5">If you’re not very interested in the journey of how I got here and just want to read the general instructions, scroll down to header '<code>liquidctl</code>'</p>
+            <p class="mb-5">If you’re not very interested in the journey of how I got here and just want to read the general instructions, scroll down to header <code>LiquidCTL</code></p>
 
-            <p class="mb-5">So I built a new computer in the winter of 2022, and I ran into some challenges getting all of my RGB lighting and fan controls to work well inside Linux. I figured I’d do a writeup on how I set it up for anyone that follows in my footsteps down the line.
-                 This guide won’t be going command-by-command, you will have to refer to some of the tools and their documentation to get it properly configured on your own system, I am sharing my experiences of what worked for me. You might have other hardware and might need to use a different approach.</p>
+            <p class="mb-5">So I built a new computer in the winter of 2022, and I ran into some challenges getting all of my RGB lighting and fan controls to work well inside Linux. I figured I’d do a writeup on how I set it up for anyone that follows in my footsteps down the line. This guide won’t be going command-by-command, you will have to refer to some of the tools and their documentation to get it properly configured on your own system, I am sharing my experiences of what worked for me. You might have other hardware and might need to use a different approach.</p>
             
             <p class="mb-5"> Honestly when I started I was not even sure if I was going to be able to actually control all of the hardware I had bought to begin with, and I realized I might have to settle for some of my lights being the default white color at all times while I was on my Linux boot. Or that my fans might always be spinning at default speeds like they were currently. After spending a bunch of money on a new system with all RGB components this was a bit sad, so I spent a lot of time troubleshooting the issue until it worked. I ended up using a combo of <code>OpenRGB</code> and <code>liquidctl</code> to get it all working in the end, but it took some time.</p>
             
@@ -73,42 +76,33 @@
             <p class="mb-5"> Cooler Master aRGB GPU Support Bracket</p>
 
 
-            <p class="mb-5">The story starts off with me trying to use <code>lmsensors</code>, which is a common Linux console tool for reading out and reporting back sensor readings, as well as setting new sensor limits for fans and CPU coolers.
-                 The documentation said to just fire off <code>sensors-detect</code> as root user. After that you should be able to run <code>pwmconfig</code> to configure fans. But in my case it was unfortunately not detecting and adding the proper modules during the <code>sensors-detect</code> command.</p>
+            <p class="mb-5">The story starts off with me trying to use <code>lmsensors</code>, which is a common Linux console tool for reading out and reporting back sensor readings, as well as setting new sensor limits for fans and CPU coolers. The documentation said to just fire off <code>sensors-detect</code> as root user. After that you should be able to run <code>pwmconfig</code> to configure fans. But in my case it was unfortunately not detecting and adding the proper modules during the <code>sensors-detect</code> command.</p>
             
-            <p class="mb-5">Sensor-detect ran off all the modules and even detected some, but would always finish with “No modules to load, skipping modules configuration”.
-                Which also meant that as I ran <code>pwmconfig</code> it reported: <code>/usr/sbin/pwmconfig: There are no pwm-capable sensor modules installed</code>. So I was fresh out of luck with <code>lmsensors</code> so far.
-                I tried various commands and order of the commands, looked online, but it also threw out constant warnings about the possibility of bricking certain motherboards and to only proceed if I knew exactly what I was doing. Since I had absolutely 0 idea what I was actually doing and just bought all my hardware, I decided after around 10 attempts of using <code>lmsensors</code> that I was going to choose a different route.</p>
+            <p class="mb-5">Sensor-detect ran off all the modules and even detected some, but would always finish with “No modules to load, skipping modules configuration”. Which also meant that as I ran <code>pwmconfig</code> it reported: <code>/usr/sbin/pwmconfig: There are no pwm-capable sensor modules installed</code>. So I was fresh out of luck with <code>lmsensors</code> so far. I tried various commands and order of the commands, looked online, but it also threw out constant warnings about the possibility of bricking certain motherboards and to only proceed if I knew exactly what I was doing. Since I had absolutely 0 idea what I was actually doing and just bought all my hardware, I decided after around 10 attempts of using <code>lmsensors</code> that I was going to choose a different route.</p>
             
             <p class="mb-5">First I tinkered around with a project called <code>OpenRGB</code>. <code>OpenRGB</code> is a piece of open-source software which aims to let you run all of your RGB lighting in one single app on any operating system. It comes with a multitude of install options, and should detect all your hardware just automatically, but here I ran into my second challenge. It was not detecting all of my hardware, my Kraken x53 Cooler was still missing. </p>
             
-            
-            
             <p class="mb-5">I had the benefit of being able to test all my hardware on my windows boot partition, so I was able to confirm that all of this hardware, including the CPU cooler was working in Windows. I recommend you do the same before you try it on Linux. I tried a lot of stuff to get <code>OpenRGB</code> to detect my Kraken, I scoured the official <code>OpenRGB</code> Discord, GitHub and random threads for a solution for days, all the while with my other fans blazing, unfortunately all to no avail. I was not going to be able to set up my CPU cooling system using the <code>OpenRGB</code> software.</p>
             
-            <p class="mb-5">After more google attempts of desperation and trying some other obscure tools and projects that did not work for me, I finally ran into a tool online called <code>liquidctl</code>. The GitHub description readme.md describes it simply as a Cross-platform tool and drivers for liquid coolers and other devices.
-                This was exactly what was looking for, if it worked. </p>
+            <p class="mb-5">After more google attempts of desperation and trying some other obscure tools and projects that did not work for me, I finally ran into a tool online called <code>liquidctl</code>. The GitHub description readme.md describes it simply as a Cross-platform tool and drivers for liquid coolers and other devices. This was exactly what was looking for, if it worked. </p>
             
-            <p class="mb-5">With a hopeful heart, I followed the install instructions extremely carefully. I ran <code>liquidctl list</code> and it presented me with an output of: <code>Device ID 0: Gigabyte RGB Fusion 2.0 5702 Controller, Device ID 1: NZXT Kraken X (X53, X63 or X73)</code>. Eureka!
-                After referring back to the documentation for <code>liquidctl</code> I ran some test commands on the commandline, and ended up with both the desired color settings and fan speeds on my CPU fans and pump. This means I can now use <code>OpenRGB</code> to control the rest of all of my hardware, so everything should be covered when it comes to lighting. I didn't quite make it with a single app, but close enough for me.</p>
+            <p class="mb-5">With a hopeful heart, I followed the install instructions extremely carefully. I ran <code>liquidctl list</code> and it presented me with an output of: <code>Device ID 0: Gigabyte RGB Fusion 2.0 5702 Controller, Device ID 1: NZXT Kraken X (X53, X63 or X73)</code>. Eureka! After referring back to the documentation for <code>liquidctl</code> I ran some test commands on the commandline, and ended up with both the desired color settings and fan speeds on my CPU fans and pump. This means I can now use <code>OpenRGB</code> to control the rest of all of my hardware, so everything should be covered when it comes to lighting. I didn't quite make it with a single app, but close enough for me.</p>
             
-            <p class="mb-5">Now only one, but one very large problem remained. I still had no way to control all my fans that are connected to the Corsair Commander Pro fan controller. So all 5 of these fans were just going at full speed constantly, driving me insane. Just like it had not worked with the first tool <code>lmsensors</code>, <code>liquidctl</code> unfortunately also did not detect my Corsair Commander Pro,
-                I was still not getting my fan controller to be detected. Suddenly, a thought hit me. The fan controller came packaged with 2 temperature probes that I chose to not hook up purely for aesthetic reasons. This might sound like a stupid thing to forget, but my computer already had multiple different sensors installed in the system for temperature. In my head, I guess I expected those to be enough and have nothing to do with the fan speed settings themselves, just a way to read temperature.</p>
+            <p class="mb-5">Now only one, but one very large problem remained. I still had no way to control all my fans that are connected to the Corsair Commander Pro fan controller. So all 5 of these fans were just going at full speed constantly, driving me insane. Just like it had not worked with the first tool <code>lmsensors</code>, <code>liquidctl</code> unfortunately also did not detect my Corsair Commander Pro, I was still not getting my fan controller to be detected. Suddenly, a thought hit me. The fan controller came packaged with 2 temperature probes that I chose to not hook up purely for aesthetic reasons. This might sound like a stupid thing to forget, but my computer already had multiple different sensors installed in the system for temperature. In my head, I guess I expected those to be enough and have nothing to do with the fan speed settings themselves, just a way to read temperature.</p>
             
             <p class="mb-5">I still wanted to try. A quick shutdown and opening of the PC case later and one of the sensor probes was connected. And apparently this was exactly the problem. I did not even need to configure anything anymore after booting, it seemed to simply work out of the box even with <code>lmsensors</code> and <code>pwmconfig</code> not running on my machine anymore. It seems under Linux the fan controller could not control it's fan speeds by reading the other probes on the motherboard. Interesting, but lesson learned.</p>
             
             
             <h6 class="title">LiquidCTL</h6>
             
-            <p class="mb-5">When it comes to setting up the tools and creating the appropriate files and profiles.
-                Different install options are available for <code>liquidctl</code>, a simple <code>apt install liquidctl</code> works for Ubuntu, or your distro specific command to install packages. Another option is to build from source. For that I would recommend to read the GitHub. Other option is a python pip install.</p>
+            <p class="mb-5">When it comes to setting up the tools and creating the appropriate files and profiles. Different install options are available for <code>liquidctl</code>, a simple <code>apt install liquidctl</code> works for Ubuntu, or your distro specific command to install packages. Another option is to build from source. For that I would recommend to read the GitHub. Other option is a python pip install.</p>
             
             
             <p class="mb-5">As soon as you have the tool installed run “<code>liquidctl</code> list” to detect all configurable hardware on your PC. Before we interact with a device we must initialize it. We can initialize all at the same time with <code>liquidctl initialize all</code>. We can query devices for their status (fan speed, temps) using <code>liquidctl status</code>.</p>
             
             <p class="mb-5">For the next step you will have to refer to the supported products page, as well as some example commands for fan and pump speeds and color profiles. You will end up with one or more commands of this following structure:</p>
             
-            <p class="mb-5"><code>liquidctl --match gigabyte set led6 color fixed ff00f7”</code></p>
+            <p class="mb-5"><pre><code class="language-html">liquidctl --match gigabyte set led6 color fixed ff00f7”</code></pre></p>
             
             <p class="mb-5">When you have those commands ready we can place those inside service files that we place inside <code>/etc/systemd/system</code>. With those service files we can now control the lights being on at system start and when resuming from sleep mode. Also it gives us the ability to actually manage all those individual commands as 1 service file.</p>
             
@@ -122,20 +116,22 @@
             
             <p class="mb-5">Add the <code>OpenRGB</code> repository:</p>
             
-            <p class="mb-5"><code>sudo add-apt-repository ppa:thopiekar/openrgb</code></p>
+            <p class="mb-5"><pre><code class="language-html">sudo add-apt-repository ppa:thopiekar/openrgb</code></pre></p>
 
-            <p class="mb-5">Update mirrorlist with <code>sudo apt update -y</code> and install with <code>apt install openrgb -y</code>.</p>
+            <p class="mb-5">Update mirrorlist and install:</p>
+
+            <p class="mb-5"><pre><code class="language-html">sudo apt update -y && apt install openrgb -y</code></pre></p>
             
             <p class="mb-5">Using <code>OpenRGB</code> to setup color profiles is pretty self explanatory, and it comes with a nice GUI, no terminal required. The only struggle with openRGB is that the settings for some hardware do not persist after reboot. According to the <code>OpenRGB</code> dev’s this is by design and it has to do with the fact that that hardware apparently has a limited flash memory writes and it would actually wear out the lifespan if they did it that way. Therefore, the better (yet unfortunately much more cumbersome) solution is to configure a profile and load that at boot time. Though, you might not have to setup any profiles to run at boot at all. For my hardware setup, openRGB remembers all my settings just fine after reboot. Only when I unplug the hardware sometimes it forgets. For instructions on how to set up an auto load profile, I found the following guide <a href="https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/319"><u> here</u></a> which seems like it should do the trick. Credits to CalcProgrammer1.</p>
 
             <p class="mb-5">Remember to also check out the <a href="https://openrgb.org/devices_0.9.html"><u> Supported Devices List</u></a></p>
 
-            <p class="mb-5">At the end of the day, it will come down to playing with BIOS settings, the smart/hardware modes of the peripherals and finding the right software to detect your hardware. Now you should be well on your way to configure your fan speeds and RGB colors in Linux. After plugging in all your temperature sensors of course.</p>
-            
             <h6 class="title">Conclusion</h6>
             
-            <p class="mb-5">My main takeaways: 1. <code>lmsensors</code> is an ancient, scary dark artistry, and we won't be using it anymore. (Not even joking, appearently its basically deprecated) 
-                2. When your hardware comes with a temperature sensor, you might actually end up needing it for stuff other than the reading temperature. Hope you enjoyed, until next time.</p>
+            <p class="mb-5">At the end of the day, it will come down to playing with BIOS settings, the smart/hardware modes of peripherals and finding the right software to detect your hardware. Now you should be well on your way to configure your fan speeds and RGB colors in Linux. After plugging in all your temperature sensors of course.</p>
+            
+
+            <p class="mb-5">My main takeaways: 1. <code>lmsensors</code> is an ancient, scary dark artistry, and we won't be using it anymore. (Not even joking, appearently its basically deprecated) 2. When your hardware comes with a temperature sensor, you might actually end up needing it for stuff other than the reading temperature. Hope you enjoyed, until next time.</p>
                 <!-- end of row -->
     </div> <!-- end of page container -->
 
@@ -156,6 +152,10 @@
 
 <!-- Dorang js -->
 <script src="../../assets/js/dorang.js"></script>
+
+<!-- JavaScript syntax highlighter -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </body>
 </html>
