@@ -10602,7 +10602,6 @@ a:hover {
   height: 110px;
   -webkit-transition: all, 0.5s;
   transition: all, 0.5s;
-  padding-bottom: 50px;
 }
 
 @media (prefers-reduced-motion: reduce) {
