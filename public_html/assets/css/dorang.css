@@ -8329,6 +8329,7 @@ button.bg-dark:focus {
   margin: auto;
   margin-bottom: 1.5rem !important;
   margin-top: 1.5rem !important;
+  padding-top: 15px;
 }
 
 .my-5 {
@@ -10601,6 +10602,7 @@ a:hover {
   height: 110px;
   -webkit-transition: all, 0.5s;
   transition: all, 0.5s;
+  padding-bottom: 50px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -10961,7 +10963,7 @@ body {
 /* page container and row */
 .page-container {
   text-align: center;
-  padding: 50px 0;
+  padding: 0px 0;
 }
 
 @media (max-width: 767.98px) {
